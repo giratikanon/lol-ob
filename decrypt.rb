@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/Users/giratikanon/.rvm/rubies/ruby-1.9.3-p385/bin/ruby
 # encoding: utf-8
 
 # === NOTES ===
@@ -29,6 +29,7 @@ class ReplayDecrypter
 	def initialize base='.'
 		@base = base
 		@meta = JSON.parse(read_file('meta.json'))
+		puts @meta['gameKey']['gameId'].to_s
 		@key = bf_ecb_decrypt @meta['gameKey']['gameId'].to_s,
 			Base64.decode64(@meta['key'])
 	end
@@ -43,6 +44,8 @@ class ReplayDecrypter
 	private :read_file
 
 	def bf_ecb_decrypt key, data
+		puts key
+		puts data
 		c = OpenSSL::Cipher.new 'bf-ecb'
 		c.decrypt
 		c.key_len = key.bytesize

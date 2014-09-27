@@ -15,8 +15,9 @@ my $ua = LWP::UserAgent->new(
     timeouts => 10
 );
 
-my $rest_prefix = 'http://112.121.84.194:8088/observer-mode/rest/consumer';
-my $rest_region = 'TW';
+my $rest_prefix = 'http://spectator.na.lol.riotgames.com:8088/observer-mode/rest/consumer';
+# my $rest_prefix = 'http://fspectate.op.gg:4181/observer-mode/rest/consumer';
+my $rest_region = 'NA1';
 
 sub rest_url {
     my ($func, $game_id, $arg) = @_;
